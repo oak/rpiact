@@ -14,7 +14,7 @@ from web.models import Action
 
 @login_required
 def home(request):
-        return render_to_response('index.html', RequestContext(request=request))
+    return render_to_response('index.html', {'actions': request.user.actions.order_by('name'),}, RequestContext(request=request))
 
 
 def login(request):
@@ -52,7 +52,8 @@ def do(request, id):
     action = get_object_or_404(Action, id=id)
     if action:
         import subprocess
-        p = subprocess.Popen(action.command, stdout=subprocess.PIPE)
+        p = subprocess.Popen(action.command.split(','), stdout=subprocess.PIPE, shell=True)
         output, err = p.communicate()
+        print output
 
-    return render_to_response('index.html', {'message': output}, RequestContext(request=request))
+    return render_to_response('index.html', {'actions': request.user.actions.order_by('name'),'message': output.replace('\n','<br />')}, RequestContext(request=request))

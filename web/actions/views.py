@@ -34,10 +34,8 @@ def create(request):
     else:
         form = ActionForm(request.POST)
         if form.is_valid():
-            action = Action()
-            action.user = request.user
-            action.save()
-            return redirect('home')
+            form.save()
+            return redirect('action-list')
         else:
             return render_to_response('actions/create.html', {'form': form},
                                       context_instance=RequestContext(request))

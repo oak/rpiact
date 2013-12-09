@@ -5,12 +5,12 @@
     <!-- Begin page content -->
     <div class="container">
 
-    {% for action in request.user.actions.all %}
+    {% for action in actions %}
     <a href="{% url 'do' action.id %}" class="btn btn-lg btn-danger">{{ action.name }}</a>
     {% endfor %}
     </div>
 
-    <div class="well well-lg">{{ message }}
+    <div class="well well-lg">{{ message|safe }}
     </div>
 
 {% endblock %}
