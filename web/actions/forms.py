@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'adcarvalho'
 from django import forms
-import autocomplete_light
-from web.models import Action, Thing
+from web.models import Action
 
 
-class ActionForm(forms.Form):
-    thing = forms.CharField(required=True, widget=autocomplete_light.TextWidget('ThingAutocomplete'), )
+class ActionForm(forms.ModelForm):
+    class Meta:
+        model = Action

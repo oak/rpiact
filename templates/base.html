@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>What did I do?</title>
+    <title>RPIAct</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'home' %}">What did I do?</a>
+                <a class="navbar-brand" href="{% url 'home' %}">RPIAct</a>
             </div>
             {% block menu %}{% include '_menu.html' %}{% endblock %}
         </div>
@@ -58,6 +58,5 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
-{% include 'autocomplete_light/static.html' %}
 </body>
 </html>

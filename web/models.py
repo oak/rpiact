@@ -6,7 +6,7 @@ from django.db import models
 class Action(models.Model):
     name = models.CharField(max_length=200, null=False)
     command = models.CharField(max_length=1000, null=False)
-    user = models.ForeignKey(User, null=False)
+    user = models.ForeignKey(User, related_name='actions', null=False)
 
     def __unicode__(self):
         return self.name

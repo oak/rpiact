@@ -2,7 +2,7 @@
     {% if actions|length > 0 %}
         <ul class="list-group">
             {% for action in actions %}
-                <li class="list-group-item"><a href="{% url 'action-list-by-thing' action.thing.id %}" >{{ action.thing }}</a> @ {{ action.date|date:"SHORT_DATETIME_FORMAT" }}
+                <li class="list-group-item">{{ action.name }}
                         <div class="pull-right"><a class="btn btn-primary btn-xs" href="{% url 'action-edit' action.id %}">
                             <span class="glyphicon glyphicon-edit"></span></a>&nbsp;<a href="{% url 'action-remove' action.id %}"
                                                            class="btn btn-xs btn-danger"
@@ -11,5 +11,5 @@
             {% endfor %}
         </ul>
     {% else %}
-        <div class="well">... did nothing</div>
+        <div class="well">{% trans 'No items found.' %}</div>
     {% endif %}
