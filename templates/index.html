@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+    <!-- Begin page content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+            <h4>{% trans 'Tell me what you did' %}</h4>
+                {% include 'actions/_form.html' %}
+                {% include 'actions/_list.html' with actions=latest_actions %}
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-5">
+                <h4>{% trans 'Should you be doing...' %}</h4>
+                {% include 'actions/_list_scheduled.html' with actions=scheduled_actions %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

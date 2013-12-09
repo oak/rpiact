@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <!-- Begin page content -->
+    <div class="container">
+        <div class="page-header">
+            <h4>{% trans 'What did you do?!' %}</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {% include 'actions/_form.html' %}
+                {% include 'actions/_list.html' with actions=latest_actions %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

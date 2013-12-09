@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <!-- Begin page content -->
+    <div class="container">
+        <div class="page-header">
+            <h4>{% trans 'Actions' %}</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {% include 'actions/_list.html' with actions=list.object_list %}
+                {% include 'common/_pager.html' with page_object=list querystring_name='actions_page' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
