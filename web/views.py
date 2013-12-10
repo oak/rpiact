@@ -52,8 +52,7 @@ def do(request, id):
     action = get_object_or_404(Action, id=id)
     if action:
         import subprocess
-        p = subprocess.Popen(action.command.split(','), stdout=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(action.command, stdout=subprocess.PIPE, shell=True)
         output, err = p.communicate()
-        print output
 
     return render_to_response('index.html', {'actions': request.user.actions.order_by('name'),'message': output.replace('\n','<br />')}, RequestContext(request=request))
