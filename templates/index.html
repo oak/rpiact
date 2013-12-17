@@ -4,11 +4,19 @@
 
     <!-- Begin page content -->
     <div class="container">
-
-    {% for action in actions %}
-    <a href="{% url 'do' action.id %}" class="btn btn-lg btn-danger">{{ action.name }}</a>
-    {% endfor %}
-    </div>
+        {% for action in actions %}
+            {% if forloop.counter0|divisibleby:'3' %}
+                {% if forloop.counter0 > 0 %}
+                    </div>
+                {% endif %}
+                <div class="row">
+            {% endif %}
+            <form action="{% url 'do' action.id %}" method="post" class="col-xs-4 col-md-4">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-lg btn-danger col-xs-12 col-md-12">{{ action.name }}</button>
+            </form>
+        {% endfor %}
+        </div>
 
     <div class="well well-lg">{{ message|safe }}
     </div>

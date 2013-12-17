@@ -14,7 +14,9 @@ from web.models import Action
 
 @login_required
 def home(request):
-    return render_to_response('index.html', {'actions': request.user.actions.order_by('name'),}, RequestContext(request=request))
+    actions = request.user.actions.order_by('name')
+
+    return render_to_response('index.html', {'actions': actions,}, RequestContext(request=request))
 
 
 def login(request):
@@ -49,6 +51,9 @@ def logout(request):
 
 
 def do(request, id):
+    if request.method == 'GET':
+        return redirect('home')
+
     action = get_object_or_404(Action, id=id)
     if action:
         import subprocess

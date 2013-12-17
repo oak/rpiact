@@ -1,8 +1,8 @@
-{% load i18n %}
+{% load i18n settings %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RPIAct</title>
+    <title>{% settings_value 'PROJECT_NAME' %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'home' %}">RPIAct</a>
+                <a class="navbar-brand" href="{% url 'home' %}">{% settings_value 'PROJECT_NAME' %}</a>
             </div>
             {% block menu %}{% include '_menu.html' %}{% endblock %}
         </div>
@@ -49,7 +49,7 @@
 
 <div id="footer">
     <div class="container">
-        <p class="text-muted credit">{% trans "So you don't forget" %} - {% now "SHORT_DATETIME_FORMAT" %}</p>
+        <p class="text-muted credit">{% settings_value 'HOST_NAME' %} - {% now "SHORT_DATETIME_FORMAT" %}</p>
     </div>
 </div>
 

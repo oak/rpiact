@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import socket
 from django.conf import global_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -96,7 +97,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
 )
 
-PROJECT_NAME = 'RaspberryPi ACT!'
+PROJECT_NAME = 'RPi ACT!'
 
 DEFAULT_PAGE_SIZE = 10
 
@@ -104,3 +105,5 @@ LOGIN_URL = '/login/'
 
 # FAST-CGI
 FORCE_SCRIPT_NAME = ''
+
+HOST_NAME = socket.gethostname()
